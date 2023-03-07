@@ -97,6 +97,42 @@ def get_user_name():
     return name
 
 
+def calculate_points(user_answer, correct_answer, clue_choice, name):
+    """
+    The user's answer is compared to the correct answer and the appropriate
+    points are rewarded, along with a feedback message.
+    """
+    if user_answer == correct_answer:
+        if clue_choice == 'N':
+            points = 7
+            feedback = f"\nYou got it {name}! And you got 2 bonus "\
+                       "points for not using a clue!\n"
+        else:
+            points = 5
+            feedback = f"\nYou got it {name}!"
+    elif abs(user_answer - correct_answer) == 1:
+        if clue_choice == 'N':
+            points = 5
+            feedback = f"So close {name}, but not quite! But you do get 2 "\
+                       "bonus points for not using a clue!\n"
+        else:
+            points = 3
+            feedback = f"\nSo close {name}, but not quite!\n"
+    elif abs(user_answer - correct_answer) == 2:
+        if clue_choice == 'N':
+            points = 3
+            feedback = f"\nNot bad {name}, but you can do better! "\
+                       "But you do get 2 "\
+                       "bonus points for not using a clue!\n"
+        else:
+            points = 1
+            feedback = f"\nNot bad {name}, but you can do better!\n"
+    else:
+        points = 0
+        feedback = f"\nSorry {name}, that's not correct.\n"
+    return points, feedback
+
+
 def landing_page():
     """
     Displays landing page - the first page the user sees
