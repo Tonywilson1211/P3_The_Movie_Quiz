@@ -103,3 +103,23 @@ def display_main_menu(name):
             exit()
         else:
             print("Invalid choice, please enter a number from 1 to 4.")
+
+
+def display_about_developer(name):
+    """
+    Displays the about developer page.
+    """
+    os.system('clear')
+    logos.about_me_logo()
+    print("The Movie Quiz was created by Anthony Wilson".center(80))
+    print("for educational purposes".center(80))
+    print("")
+    print("LinkedIn Profile:".center(80))
+    print("https://www.linkedin.com/in/ant-wilson/".center(80))
+    print("")
+    print("GitHub Repository".center(80))
+    print("https://github.com/Tonywilson1211/TBD".center(80))
+    print("")
+    print("Thank you for taking the time to look at my project\n".center(80))
+    choice = ""
+    nav.main_menu_nav(name, display_main_menu, choice)
