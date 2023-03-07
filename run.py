@@ -4,6 +4,7 @@ import termios
 import tty
 import time
 import logos
+import random
 
 
 def print_slowly(text):
