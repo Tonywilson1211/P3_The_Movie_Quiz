@@ -5,6 +5,8 @@ import tty
 import time
 import logos
 import random
+import nav
+import os
 
 
 def print_slowly(text):
@@ -33,6 +35,15 @@ def load_questions():
         questions = json.load(f)
     random.shuffle(questions)
     return questions
+
+
+def print_question_header(question_num):
+    """
+    Print movie name and question number out of 10.
+    """
+    os.system('clear')
+    logos.question_header_logo()
+    print(f"\n{'*' * 17} Question {question_num+1} of 5 {'*' * 18}")
 
 
 def get_clue_choice():
