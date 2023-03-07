@@ -3,6 +3,7 @@ import sys
 import termios
 import tty
 import time
+import logos
 
 
 def print_slowly(text):
