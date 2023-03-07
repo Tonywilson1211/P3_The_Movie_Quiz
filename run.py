@@ -59,6 +59,31 @@ def print_question_clue(question):
     print_slowly(f"\nClue: {question['clue']}\n\n\n")
 
 
+def get_user_answer():
+    """
+    User inputs their answer into the terminal.
+    """
+    error_message = ""
+    while True:
+        answer = input(f"\033[F\033[K{error_message}Guess the "
+                       "year (e.g. 1990): ").strip()
+        if len(answer) != 4:
+            error_message = "\033[F\033[KPlease enter a year as a "\
+                            "4-digit number. e.g. 2004.\n"
+        else:
+            try:
+                year = int(answer)
+                if year < 1950 or year > 2024:
+                    error_message = "\033[F\033[KInput not recognised. "\
+                                    "Please enter a valid year between "\
+                                    "1950 and 2024.\n"
+                else:
+                    return year
+            except ValueError:
+                error_message = "\033[F\033[KPlease enter a year as a "\
+                            "4-digit number. e.g. 2004.\n"
+
+
 def get_user_name():
     """
     Get user name
