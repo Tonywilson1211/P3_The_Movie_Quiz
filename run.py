@@ -1,4 +1,8 @@
 import json
+import sys
+import termios
+import tty
+import time
 
 
 def print_slowly(text):
