@@ -133,6 +133,21 @@ def calculate_points(user_answer, correct_answer, clue_choice, name):
     return points, feedback
 
 
+def game_summary(score, total_score, name):
+    """
+    Shows user their total score at the end of the game.
+    """
+    os.system('clear')
+    logos.result_logo()
+    print_slowly(f"\nCongratulations {name}, you have completed the quiz!")
+    print_slowly("Let's take a look at how you got on....")
+    percentage = round(score / total_score * 100)
+    print_slowly(f"\nYour final score is {score} out of a "
+                 f"possible {total_score}. That's {percentage}%!\n")
+    print_slowly("Thanks for taking the time to play our "
+                 f"quiz {name}, we hope you had fun!\n")
+
+
 def landing_page():
     """
     Displays landing page - the first page the user sees
