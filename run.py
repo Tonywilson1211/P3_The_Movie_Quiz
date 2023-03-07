@@ -148,6 +148,63 @@ def game_summary(score, total_score, name):
                  f"quiz {name}, we hope you had fun!\n")
 
 
+def play_game(name):
+    """
+    This function runs the game by loading questions from a JSON file,
+    asking the user to guess the year a movie was released,
+    and providing feedback on their answer. The function keeps track
+    of the user's score, displays it at the end of the game,
+    and allows the user to continue playing or return to the main menu.
+    """
+    score = 0
+    num_of_questions = 5
+    questions = load_questions()
+    total_score = num_of_questions * 7
+    for i, question in enumerate(questions[:num_of_questions]):
+        print_question_header(i)
+        title = question['title'].upper()
+        print_slowly(f"\nMovie Title:   {title}\n\n")
+        # get clue choice from user
+        clue_choice = get_clue_choice()
+        if clue_choice == 'Y':
+            print_question_clue(question)
+        # get answer from user
+        answer = get_user_answer()
+        points, feedback = calculate_points(
+            answer, question['answer'], clue_choice, name)
+        print(feedback)
+        if answer == question['answer']:
+            print_slowly(
+                f"{question['title']} was indeed "
+                f"released in {question['answer']}")
+        else:
+            print_slowly(f"{question['title']} was released"
+                         f" in {question['answer']}")
+        print_slowly(f"\nYou scored {points} points for this question.")
+        score += points
+        print_slowly(f"So far you have scored {score} points\n")
+        if i == num_of_questions - 1:
+            game_summary(score, total_score, name)
+            end_choice = nav.end_game_get_user_choice()
+            if end_choice == 'S':
+                play_game(name)
+            elif end_choice == 'M':
+                display_main_menu(name)
+                os.system('clear')
+            elif end_choice == 'E':
+                print("Exiting program...We hope to see you again soon!")
+                exit()
+        choice = nav.get_user_choice()
+        if choice == '1':
+            continue
+        elif choice == 'M':
+            display_main_menu(name)
+            os.system('clear')
+        elif choice == 'E':
+            print("Exiting program...We hope to see you again soon!")
+            exit()
+
+
 def landing_page():
     """
     Displays landing page - the first page the user sees
