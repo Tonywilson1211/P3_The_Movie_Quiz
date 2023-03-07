@@ -123,3 +123,47 @@ def display_about_developer(name):
     print("Thank you for taking the time to look at my project\n".center(80))
     choice = ""
     nav.main_menu_nav(name, display_main_menu, choice)
+
+
+def display_instructions(name):
+    """
+    Displays instructions on how to play the game
+    """
+    os.system('clear')
+    logos.display_instructions_logo()
+    print_slowly("************* THE AIM OF THE GAME ************\n".center(80))
+    print("The aim of the game is to correctly guess the".center(80))
+    print("release date of the movie.".center(80))
+    print("Simple! (if you know the answer that is...)\n\n".center(80))
+    print_slowly("*************** THE QUIZ FORMAT **************\n".center(80))
+    print("When the quiz first begins you will see the name".center(80))
+    print("of the movie. You will be invited to choose".center(80))
+    print("to see a clue or not. Once you have made your ".center(80))
+    print("choice you will be invited to guess the answer.\n".center(80))
+    print("Once you have entered your answer you will see".center(80))
+    print("if you were correct, the number of points scored,".center(80))
+    print("and your total score so far. Once you have".center(80))
+    print("answered 5 questions you will be taken to".center(80))
+    print("the quiz summary screen and you can review".center(80))
+    print("how well you did.\n\n".center(80))
+    print_slowly("*************** HOW CLUES WORK ***************\n".center(80))
+    print("Before you guess the year the movie was released".center(80))
+    print("you will be asked if you want to see a clue.".center(80))
+    print("You'll need to enter either 'Y' (yes) or 'N' (no)\n".center(80))
+    print("All clues give you a good hint as to when the movie".center(80))
+    print("was released. For example, if a movie was released in".center(80))
+    print("2002 the clue would be 'Released in early 2000s'\n\n".center(80))
+    print_slowly("******* HOW THE POINTS ARE CALCULATED ********\n".center(80))
+    print("Enter the correct answer, you are receive 5 points.\n".center(80))
+    print("If you are 1 year off the correct answer, you receive".center(80))
+    print(" with 3 points.\n".center(80))
+    print("If you are 2 years off the correct answer, you receive".center(80))
+    print("with 1 point.\n".center(80))
+    print("If you are 3 or more years away from the ".center(80))
+    print("correct answer, you get 0 points.\n".center(80))
+    print("If you guess within 2 years of the release date and".center(80))
+    print("don't use a clue, you receive an additional 2 points.\n".center(80))
+    print("You will be asked 5 questions, so the maximum".center(80))
+    print("possible score is 35 points.\n".center(80))
+    choice = ""
+    nav.main_menu_nav(name, display_main_menu, choice)
