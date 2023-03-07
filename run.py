@@ -24,6 +24,16 @@ def print_slowly(text):
     print()
 
 
+def load_questions():
+    """
+    Pull questions from movies.json file.
+    """
+    with open('movies.json', 'r', encoding='utf-8') as f:
+        questions = json.load(f)
+    random.shuffle(questions)
+    return questions
+
+
 def get_user_name():
     """
     Get user name
