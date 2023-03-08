@@ -1,12 +1,12 @@
 import json
+import random
+import os
+import time
+import logos
+import nav
 import sys
 import termios
 import tty
-import time
-import logos
-import random
-import nav
-import os
 
 
 def print_slowly(text):
@@ -17,10 +17,11 @@ def print_slowly(text):
     fd = sys.stdin.fileno()
     old_settings = termios.tcgetattr(fd)
     try:
-        tty.setraw(fd)  # set terminal to raw mode
+        # set terminal to raw mode
+        tty.setraw(fd)
         for char in text:
             print(char, end='', flush=True)
-            time.sleep(0.01)
+            time.sleep(0.015)
     finally:
         # restore terminal settings
         termios.tcsetattr(fd, termios.TCSADRAIN, old_settings)
@@ -95,19 +96,6 @@ def get_user_answer():
                             "4-digit number. e.g. 2004.\n"
 
 
-def get_user_name():
-    """
-    Get user name
-    """
-    while True:
-        name = input("\n ".center(74)).capitalize()
-        if len(name) > 1 and len(name) < 9:
-            break
-        else:
-            print("Name should be between 1 and 9 characters long.".center(80))
-    return name
-
-
 def calculate_points(user_answer, correct_answer, clue_choice, name):
     """
     The user's answer is compared to the correct answer and the appropriate
@@ -154,9 +142,58 @@ def game_summary(score, total_score, name):
     print_slowly("Let's take a look at how you got on....")
     percentage = round(score / total_score * 100)
     print_slowly(f"\nYour final score is {score} out of a "
-                 f"possible {total_score}. That's {percentage}%!\n")
+                 f"posible {total_score}. That's {percentage}%!\n")
     print_slowly("Thanks for taking the time to play our "
                  f"quiz {name}, we hope you had fun!\n")
+
+
+def main_menu_nav(name, display_main_menu, choice):
+    while True:
+        print(f"{name}, when ready, press 'Enter' to head over ".center(80))
+        print("to the main menu: ".center(80))    
+        choice = input("\n ".center(80)).capitalize()
+        if not choice.strip():
+            display_main_menu(name)  # display the main menu again
+            os.system('clear')
+            break
+    return name
+
+
+def get_user_choice():
+    """
+    Navigation for the user to either continue to the next question,
+    return to the main menu or exit the programme.
+    """
+    while True:
+        try:
+            choice = input("Press '1' for next question\n"
+                           "Press 'M' to return to main menu\n"
+                           "Press 'E' to exit the "
+                           "programme\nSelect Option: ").strip().upper()
+            if choice not in ['1', 'M', 'E']:
+                raise ValueError
+            break
+        except ValueError:
+            print("Input not recognised. Please enter '1', 'M' or 'E'.")
+    return choice
+
+
+def end_game_get_user_choice():
+    """
+    Navigation for the user at the end of the quiz.
+    """
+    while True:
+        try:
+            choice = input("Press 'S' to start a new quiz\n"
+                           "Press 'M' to return to main menu\n"
+                           "Press 'E' to exit the "
+                           "programme\nSelect Option: ").strip().upper()
+            if choice not in ['S', 'M', 'E']:
+                raise ValueError
+            break
+        except ValueError:
+            print("Input not recognised. Please enter 'S', 'M' or 'E'.")
+    return choice
 
 
 def play_game(name):
@@ -196,16 +233,14 @@ def play_game(name):
         print_slowly(f"So far you have scored {score} points\n")
         if i == num_of_questions - 1:
             game_summary(score, total_score, name)
-            end_choice = nav.end_game_get_user_choice()
-            if end_choice == 'S':
-                play_game(name)
-            elif end_choice == 'M':
+            end_choice = end_game_get_user_choice()
+            if end_choice == 'M':
                 display_main_menu(name)
                 os.system('clear')
             elif end_choice == 'E':
                 print("Exiting program...We hope to see you again soon!")
                 exit()
-        choice = nav.get_user_choice()
+        choice = get_user_choice()
         if choice == '1':
             continue
         elif choice == 'M':
@@ -214,33 +249,6 @@ def play_game(name):
         elif choice == 'E':
             print("Exiting program...We hope to see you again soon!")
             exit()
-
-
-def landing_page():
-    """
-    Displays landing page - the first page the user sees
-    """
-    os.system('clear')
-    logos.landing_page_logo()
-    print("Hello and welcome to The Movie Quiz!".center(80))
-    print("")
-    print_slowly("The Quiz where your knowledge of movies and,".center(80))
-    print_slowly("when they were released is put to the test!".center(80))
-    print("")
-    print("What is your name? ".center(80))
-    name = get_user_name()
-    print("")
-    print(f"Welcome {name}!".center(80))
-    print("")
-    print_slowly("We have an impressive archive of over 135 movies".center(80))
-    print_slowly("to test your knowledge, so with 5 questions ".center(80))
-    print_slowly("per quiz, you are sure to have a varried".center(80))
-    print_slowly("experience, everytime you play!\n".center(80))
-    choice = ""
-    nav.main_menu_nav(name, display_main_menu, choice)
-
-
-landing_page()
 
 
 def display_main_menu(name):
@@ -282,26 +290,6 @@ def display_main_menu(name):
             exit()
         else:
             print("Invalid choice, please enter a number from 1 to 4.")
-
-
-def display_about_developer(name):
-    """
-    Displays the about developer page.
-    """
-    os.system('clear')
-    logos.about_me_logo()
-    print("The Movie Quiz was created by Anthony Wilson".center(80))
-    print("for educational purposes".center(80))
-    print("")
-    print("LinkedIn Profile:".center(80))
-    print("https://www.linkedin.com/in/ant-wilson/".center(80))
-    print("")
-    print("GitHub Repository".center(80))
-    print("https://github.com/Tonywilson1211/TBD".center(80))
-    print("")
-    print("Thank you for taking the time to look at my project\n".center(80))
-    choice = ""
-    nav.main_menu_nav(name, display_main_menu, choice)
 
 
 def display_instructions(name):
@@ -346,3 +334,63 @@ def display_instructions(name):
     print("possible score is 35 points.\n".center(80))
     choice = ""
     nav.main_menu_nav(name, display_main_menu, choice)
+
+
+def get_user_name():
+    """
+    Get user name
+    """
+    while True:
+        name = input("\n ".center(74)).capitalize()
+        if len(name) > 1 and len(name) < 9:
+            break
+        else:
+            print("Name should be between 1 and 9 characters long.".center(80))
+    return name
+
+
+def landing_page():
+    """
+    Displays landing page - the first page the user sees
+    """
+    os.system('clear')
+    logos.landing_page_logo()
+    print("Hello and welcome to The Movie Quiz!".center(80))
+    print("")
+    print_slowly("The Quiz where your knowledge of movies and,".center(80))
+    print_slowly("when they were released is put to the test!".center(80))
+    print("")
+    print("What is your name? ".center(80))
+    name = get_user_name()
+    print("")
+    print(f"Welcome {name}!".center(80))
+    print("")
+    print_slowly("We have an impressive archive of over 135 movies".center(80))
+    print_slowly("to test your knowledge, so with 5 questions ".center(80))
+    print_slowly("per quiz, you are sure to have a varried".center(80))
+    print_slowly("experience, everytime you play!\n".center(80))
+    choice = ""
+    nav.main_menu_nav(name, display_main_menu, choice)
+
+
+def display_about_developer(name):
+    """
+    Displays the about developer page.
+    """
+    os.system('clear')
+    logos.about_me_logo()
+    print("The Movie Quiz was created by Anthony Wilson".center(80))
+    print("for educational purposes".center(80))
+    print("")
+    print("LinkedIn Profile:".center(80))
+    print("https://www.linkedin.com/in/ant-wilson/".center(80))
+    print("")
+    print("GitHub Repository".center(80))
+    print("https://github.com/Tonywilson1211/TBD".center(80))
+    print("")
+    print("Thank you for taking the time to look at my project\n".center(80))
+    choice = ""
+    nav.main_menu_nav(name, display_main_menu, choice)
+
+
+landing_page()
