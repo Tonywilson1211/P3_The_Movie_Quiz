@@ -191,15 +191,42 @@ Quiz guide page|Select option 2 in the start menu|Shows the instructions|Works a
 
 |Feature|Action|Expected result|Actual result|
 |---|---|---|---|
-About the developer page|Select option 3 in the start menu|Shows the help|Works as expected|
+About the developer page|Select option 3 in the start menu|Shows developer details|Works as expected|
 
+4. Exit programme
+|Feature|Action|Expected result|Actual result|
+|---|---|---|---|
+Exit Programme|Select option 4 in the start menu|Exits Programme|Works as expected|
 
+5. Return to the main menu mid quiz
+|Feature|Action|Expected result|Actual result|
+|---|---|---|---|
+Main Menu|Select option M from quiz|Exits Programme|Works as expected|
 
+5. Know which question number I am on
+|Feature|Action|Expected result|Actual result|
+|---|---|---|---|
+Quiz page|No action required|Question number changes from 1-5 as quiz progresses|Works as expected|
 
+6. Choose whether I want a clue to help answer the question
+|Feature|Action|Expected result|Actual result|
+|---|---|---|---|
+Quiz page|No action required|Question number changes from 1-5 as quiz progresses|Works as expected|
 
+7. Help protect me from inputting mistakes as answers
+|Feature|Action|Expected result|Actual result|
+|---|---|---|---|
+Quiz page|Enter a range of incorrect answers|Console rejects input and gives feedback|Works as expected|
 
+8. Use my name in the quiz to add a personal touch
+|Feature|Action|Expected result|Actual result|
+|---|---|---|---|
+Landing Page|Enter name|Name appears when called in code throughout app|Works as expected|
 
-
+9. Show a results summary page at the end of the quiz
+|Feature|Action|Expected result|Actual result|
+|---|---|---|---|
+Results page|No action required|Final score is shown|Works as expected|
 
 ## Bugs
 
