@@ -2,11 +2,10 @@ import json
 import random
 import os
 import time
-import logos
-import nav
 import sys
 import termios
 import tty
+import logos
 
 
 def print_slowly(text):
@@ -148,9 +147,12 @@ def game_summary(score, total_score, name):
 
 
 def main_menu_nav(name, display_main_menu, choice):
+    """
+    Provides user with navigation options to menu screen.
+    """
     while True:
         print(f"{name}, when ready, press 'Enter' to head over ".center(80))
-        print("to the main menu: ".center(80))    
+        print("to the main menu: ".center(80))
         choice = input("\n ".center(80)).capitalize()
         if not choice.strip():
             display_main_menu(name)  # display the main menu again
@@ -333,7 +335,7 @@ def display_instructions(name):
     print("You will be asked 5 questions, so the maximum".center(80))
     print("possible score is 35 points.\n".center(80))
     choice = ""
-    nav.main_menu_nav(name, display_main_menu, choice)
+    main_menu_nav(name, display_main_menu, choice)
 
 
 def get_user_name():
@@ -370,7 +372,7 @@ def landing_page():
     print_slowly("per quiz, you are sure to have a varried".center(80))
     print_slowly("experience, everytime you play!\n".center(80))
     choice = ""
-    nav.main_menu_nav(name, display_main_menu, choice)
+    main_menu_nav(name, display_main_menu, choice)
 
 
 def display_about_developer(name):
@@ -390,7 +392,7 @@ def display_about_developer(name):
     print("")
     print("Thank you for taking the time to look at my project\n".center(80))
     choice = ""
-    nav.main_menu_nav(name, display_main_menu, choice)
+    main_menu_nav(name, display_main_menu, choice)
 
 
 landing_page()
