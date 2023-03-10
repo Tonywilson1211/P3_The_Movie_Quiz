@@ -166,10 +166,8 @@ pip3 install pycodestyle
 
 2. Select pycodestyle as linter
 
-<details>
- <summary>Screenshot from console</summary>
- <img src="#">
-</details>
+Screenshot from console
+![Problems](assets/readme_img/problems.jpg)
 
 ### Testing user stories
 
