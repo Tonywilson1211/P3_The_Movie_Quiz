@@ -84,10 +84,10 @@ def get_user_answer():
         else:
             try:
                 year = int(answer)
-                if year < 1950 or year > 2024:
+                if year < 1950 or year > 2023:
                     error_message = "\033[F\033[KInput not recognised. "\
                                     "Please enter a valid year between "\
-                                    "1950 and 2024.\n"
+                                    "1950 and 2023.\n"
                 else:
                     return year
             except ValueError:
@@ -273,7 +273,7 @@ def display_main_menu(name):
             menu_displayed = True
 
         # get user input
-        choice = input("Select Option (1-4): ")
+        choice = input("Select Option (1-4): ").strip()
 
         # handle user choice
         if choice == '1':
