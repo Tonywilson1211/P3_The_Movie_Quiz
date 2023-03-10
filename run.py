@@ -1,3 +1,7 @@
+"""
+import section
+"""
+
 import json
 import random
 import os
@@ -11,19 +15,20 @@ import logos
 def print_slowly(text):
     """
     animation to make text appear to be typed out one letter at a time
-    rather than appear in bulk.
+    rather than appear in bulk. Termios and tty imported to prohibit user
+    user from interupting text whilst printing.
     """
-    fd = sys.stdin.fileno()
-    old_settings = termios.tcgetattr(fd)
+    file_descriptor = sys.stdin.fileno()
+    old_settings = termios.tcgetattr(file_descriptor)
     try:
         # set terminal to raw mode
-        tty.setraw(fd)
+        tty.setraw(file_descriptor)
         for char in text:
             print(char, end='', flush=True)
             time.sleep(0.015)
     finally:
         # restore terminal settings
-        termios.tcsetattr(fd, termios.TCSADRAIN, old_settings)
+        termios.tcsetattr(file_descriptor, termios.TCSADRAIN, old_settings)
     print()
 
 
@@ -31,8 +36,8 @@ def load_questions():
     """
     Pull questions from movies.json file.
     """
-    with open('movies.json', 'r', encoding='utf-8') as f:
-        questions = json.load(f)
+    with open('movies.json', 'r', encoding='utf-8') as file:
+        questions = json.load(file)
     random.shuffle(questions)
     return questions
 
@@ -396,4 +401,3 @@ def display_about_developer(name):
     print("Thank you for taking the time to look at my project\n".center(80))
     choice = ""
     main_menu_nav(name, choice)
-
