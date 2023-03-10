@@ -375,6 +375,9 @@ def landing_page():
     main_menu_nav(name, choice)
 
 
+landing_page()
+
+
 def display_about_developer(name):
     """
     Displays the about developer page.
@@ -394,5 +397,3 @@ def display_about_developer(name):
     choice = ""
     main_menu_nav(name, choice)
 
-
-landing_page()
