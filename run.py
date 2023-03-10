@@ -146,7 +146,7 @@ def game_summary(score, total_score, name):
                  f"quiz {name}, we hope you had fun!\n")
 
 
-def main_menu_nav(name, display_main_menu, choice):
+def main_menu_nav(name, choice):
     """
     Provides user with navigation options to menu screen.
     """
@@ -335,7 +335,7 @@ def display_instructions(name):
     print("You will be asked 5 questions, so the maximum".center(80))
     print("possible score is 35 points.\n".center(80))
     choice = ""
-    main_menu_nav(name, display_main_menu, choice)
+    main_menu_nav(name, choice)
 
 
 def get_user_name():
@@ -372,7 +372,7 @@ def landing_page():
     print_slowly("per quiz, you are sure to have a varried".center(80))
     print_slowly("experience, everytime you play!\n".center(80))
     choice = ""
-    main_menu_nav(name, display_main_menu, choice)
+    main_menu_nav(name, choice)
 
 
 def display_about_developer(name):
@@ -392,7 +392,7 @@ def display_about_developer(name):
     print("")
     print("Thank you for taking the time to look at my project\n".center(80))
     choice = ""
-    main_menu_nav(name, display_main_menu, choice)
+    main_menu_nav(name, choice)
 
 
 landing_page()
