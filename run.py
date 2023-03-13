@@ -373,10 +373,6 @@ def landing_page():
     print("")
     print(f"Welcome {name}!".center(80))
     print("")
-    print_slowly("We have an impressive archive of over 135 movies".center(80))
-    print_slowly("to test your knowledge, so with 5 questions ".center(80))
-    print_slowly("per quiz, you are sure to have a varried".center(80))
-    print_slowly("experience, everytime you play!\n".center(80))
     choice = ""
     main_menu_nav(name, choice)
 
