@@ -269,9 +269,9 @@ def play_game(name):
                 os.system('clear')
                 display_main_menu(name)
             elif end_choice == 'E':
-                print_slowest("Exiting program...We hope to see you again soon!")
+                print_slowest("Exiting program....."
+                              "We hope to see you again soon!")
                 os.system('clear')
-                
                 exit()
         choice = get_user_choice()
         if choice == '1':
