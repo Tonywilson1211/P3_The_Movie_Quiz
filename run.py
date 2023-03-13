@@ -109,7 +109,7 @@ def calculate_points(user_answer, correct_answer, clue_choice, name):
         if clue_choice == 'N':
             points = 7
             feedback = f"\nYou got it {name}! And you got 2 bonus "\
-                       "points for not using a clue!\n"
+                       "points\nfor not using a clue!\n"
         else:
             points = 5
             feedback = f"\nYou got it {name}!"
@@ -117,7 +117,7 @@ def calculate_points(user_answer, correct_answer, clue_choice, name):
         if clue_choice == 'N':
             points = 5
             feedback = f"So close {name}, but not quite! But you do get 2 "\
-                       "bonus points for not using a clue!\n"
+                       "bonus points\nfor not using a clue!\n"
         else:
             points = 3
             feedback = f"\nSo close {name}, but not quite!\n"
@@ -126,7 +126,7 @@ def calculate_points(user_answer, correct_answer, clue_choice, name):
             points = 3
             feedback = f"\nNot bad {name}, but you can do better! "\
                        "But you do get 2 "\
-                       "bonus points for not using a clue!\n"
+                       "bonus points\nfor not using a clue!\n"
         else:
             points = 1
             feedback = f"\nNot bad {name}, but you can do better!\n"
