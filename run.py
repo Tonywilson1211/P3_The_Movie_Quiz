@@ -160,8 +160,8 @@ def main_menu_nav(name, choice):
         print("to the main menu: ".center(80))
         choice = input("\n ".center(80)).capitalize()
         if not choice.strip():
-            display_main_menu(name)  # display the main menu again
             os.system('clear')
+            display_main_menu(name)  # display the main menu again
             break
     return name
 
@@ -243,8 +243,8 @@ def play_game(name):
             game_summary(score, total_score, name)
             end_choice = end_game_get_user_choice()
             if end_choice == 'M':
-                display_main_menu(name)
                 os.system('clear')
+                display_main_menu(name)
             elif end_choice == 'E':
                 print("Exiting program...We hope to see you again soon!")
                 exit()
@@ -252,11 +252,31 @@ def play_game(name):
         if choice == '1':
             continue
         elif choice == 'M':
-            display_main_menu(name)
             os.system('clear')
+            display_main_menu(name)
         elif choice == 'E':
             print("Exiting program...We hope to see you again soon!")
             exit()
+
+
+def display_about_developer(name):
+    """
+    Displays the about developer page.
+    """
+    os.system('clear')
+    logos.about_me_logo()
+    print("The Movie Quiz was created by Anthony Wilson".center(80))
+    print("for educational purposes".center(80))
+    print("")
+    print("LinkedIn Profile:".center(80))
+    print("https://www.linkedin.com/in/ant-wilson/".center(80))
+    print("")
+    print("GitHub Repository".center(80))
+    print("https://github.com/Tonywilson1211/TBD".center(80))
+    print("")
+    print("Thank you for taking the time to look at my project\n".center(80))
+    choice = ""
+    main_menu_nav(name, choice)
 
 
 def display_main_menu(name):
@@ -286,12 +306,12 @@ def display_main_menu(name):
             play_game(name)
             menu_displayed = False
         elif choice == '2':
-            display_instructions(name)
             os.system('clear')
+            display_instructions(name)
             menu_displayed = False
         elif choice == '3':
-            display_about_developer(name)
             os.system('clear')
+            display_about_developer(name)
             menu_displayed = False
         elif choice == '4':
             print("Exiting program...We hope to see you again soon!")
@@ -378,23 +398,3 @@ def landing_page():
 
 
 landing_page()
-
-
-def display_about_developer(name):
-    """
-    Displays the about developer page.
-    """
-    os.system('clear')
-    logos.about_me_logo()
-    print("The Movie Quiz was created by Anthony Wilson".center(80))
-    print("for educational purposes".center(80))
-    print("")
-    print("LinkedIn Profile:".center(80))
-    print("https://www.linkedin.com/in/ant-wilson/".center(80))
-    print("")
-    print("GitHub Repository".center(80))
-    print("https://github.com/Tonywilson1211/TBD".center(80))
-    print("")
-    print("Thank you for taking the time to look at my project\n".center(80))
-    choice = ""
-    main_menu_nav(name, choice)
