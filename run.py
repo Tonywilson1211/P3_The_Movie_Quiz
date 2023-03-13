@@ -173,7 +173,8 @@ def get_user_choice():
     """
     while True:
         try:
-            choice = input("Press '1' for next question\n"
+            choice = input("\n************ Options ************\n\n"
+                           "Press '1' for next question\n"
                            "Press 'M' to return to main menu\n"
                            "Press 'E' to exit the "
                            "programme\nSelect Option: ").strip().upper()
