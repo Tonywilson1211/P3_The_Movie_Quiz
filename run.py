@@ -32,6 +32,26 @@ def print_slowly(text):
     print()
 
 
+def print_slowest(text):
+    """
+    animation to make text appear to be typed out one letter at a time
+    rather than appear in bulk. Termios and tty imported to prohibit user
+    user from interupting text whilst printing.
+    """
+    file_descriptor = sys.stdin.fileno()
+    old_settings = termios.tcgetattr(file_descriptor)
+    try:
+        # set terminal to raw mode
+        tty.setraw(file_descriptor)
+        for char in text:
+            print(char, end='', flush=True)
+            time.sleep(0.04)
+    finally:
+        # restore terminal settings
+        termios.tcsetattr(file_descriptor, termios.TCSADRAIN, old_settings)
+    print()
+
+
 def load_questions():
     """
     Pull questions from movies.json file.
@@ -242,11 +262,16 @@ def play_game(name):
         if i == num_of_questions - 1:
             game_summary(score, total_score, name)
             end_choice = end_game_get_user_choice()
+            if end_choice == 'S':
+                os.system('clear')
+                play_game(name)
             if end_choice == 'M':
                 os.system('clear')
                 display_main_menu(name)
             elif end_choice == 'E':
-                print("Exiting program...We hope to see you again soon!")
+                print_slowest("Exiting program...We hope to see you again soon!")
+                os.system('clear')
+                
                 exit()
         choice = get_user_choice()
         if choice == '1':
@@ -255,7 +280,8 @@ def play_game(name):
             os.system('clear')
             display_main_menu(name)
         elif choice == 'E':
-            print("Exiting program...We hope to see you again soon!")
+            print_slowest("Exiting program...We hope to see you again soon!")
+            os.system('clear')
             exit()
 
 
@@ -314,7 +340,7 @@ def display_main_menu(name):
             display_about_developer(name)
             menu_displayed = False
         elif choice == '4':
-            print("Exiting program...We hope to see you again soon!")
+            print_slowest("Exiting program...We hope to see you again soon!")
             exit()
         else:
             print("Invalid choice, please enter a number from 1 to 4.")
