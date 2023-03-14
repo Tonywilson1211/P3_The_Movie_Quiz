@@ -64,7 +64,7 @@ def load_questions():
 
 def print_question_header(question_num):
     """
-    Print movie name and question number out of 10.
+    Print movie name and question number out of 5.
     """
     os.system('clear')
     logos.question_header_logo()
@@ -316,7 +316,7 @@ def display_main_menu(name):
     """
     Display main menu
     """
-    os.system('clear')
+    os.system('cls' if os.name == 'nt' else 'clear')
     logos.main_menu_logo()
 
     # loop until user chooses to exit
