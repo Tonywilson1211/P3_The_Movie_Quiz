@@ -382,11 +382,11 @@ def get_user_name():
     Get user name
     """
     while True:
-        name = input("\n ".center(74)).capitalize()
+        name = input("\n ".center(74)).capitalize().strip()
         if len(name) > 1 and len(name) < 9:
             break
         else:
-            print("Name should be between 1 and 9 characters long.".center(80))
+            print("Name should be between 2 and 9 characters long.".center(80))
     return name
 
 
