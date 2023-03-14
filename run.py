@@ -68,6 +68,13 @@ def print_question_header(question_num):
     """
     os.system('clear')
     logos.question_header_logo()
+    print("\n\nPoints Available")
+    print("5 points for correct year")
+    print("3 points if 1 year off from correct year")
+    print("1 point if 2 years off from correct year")
+    print("0 points if 3 or more years off from correct year")
+    print("2 bonus points if clue NOT used and within"
+          " 2 years of correct year \n")
     print(f"\n{'*' * 17} Question {question_num+1} of 5 {'*' * 18}")
 
 
