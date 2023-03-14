@@ -167,7 +167,7 @@ def game_summary(score, total_score, name):
     """
     Shows user their total score at the end of the game.
     """
-    os.system('clear')
+    os.system('printf "\033c"')
     logos.result_logo()
     print_slowly(f"\nCongratulations {name}, you have completed the quiz!")
     print_slowly("Let's take a look at how you got on....")
