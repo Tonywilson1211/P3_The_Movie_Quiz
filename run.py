@@ -317,6 +317,7 @@ def display_main_menu(name):
     Display main menu
     """
     os.system('cls' if os.name == 'nt' else 'clear')
+    sys.stdout.flush()
     logos.main_menu_logo()
 
     # loop until user chooses to exit
