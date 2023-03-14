@@ -66,7 +66,7 @@ def print_question_header(question_num):
     """
     Print movie name and question number out of 5.
     """
-    os.system('clear')
+    os.system('printf "\033c"')
     logos.question_header_logo()
     print("\n\nPoints Available")
     print("5 points for correct year")
@@ -173,7 +173,7 @@ def game_summary(score, total_score, name):
     print_slowly("Let's take a look at how you got on....")
     percentage = round(score / total_score * 100)
     print_slowly(f"\nYour final score is {score} out of a "
-                 f"posible {total_score}. That's {percentage}%!\n")
+                 f"possible {total_score}. That's {percentage}%!\n")
     print_slowly("Thanks for taking the time to play our "
                  f"quiz {name}, we hope you had fun!\n")
 
