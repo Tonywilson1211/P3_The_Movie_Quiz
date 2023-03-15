@@ -85,46 +85,111 @@ The following flowchart shows the structure and logic of the The Movie Quiz.
 
 The app has 9 features in total
 
-### Main menu
+### LANDING PAGE
+
+- First screen seen when programme starts
+- Logo with name
+- Welcome text and breif description of quiz
+
+![Landing page](assets/readme_img/landing.jpg)
+
+### ADD USER NAME
+
+- Also on landing page
+- User can enter their name.
+- Name is used throughout programme to enhance UX
+- Error handling capabilities. Any combination of characters allowed, character limit between 2-9.
+
+![Name](assets/readme_img/name.jpg)
+
+### 'TYPEWRITER' EFFECT ON TEXT
+
+- On selected texts throughout the app, text is printed one letter at a time. 
+- Improves user UX by adding styling whilst reduce the amount of text suddenly appearing.
+
+### DECORATIVE TITLES
+
+- Each page has a decorative title
+- 6 different titles in total
+- Improves UX by being big and bold, and setting a tone that is fun.
+
+![Title example](assets/readme_img/title.jpg)
+
+### MAIN MENU PAGE
 
 - Shows the main menu
 - Contains the following options:
-    - Start Quiz
-    - Quiz Guide
-    - About the Developer
-    - Exit
+    - 1. Start Quiz
+    - 2. Quiz Guide
+    - 3. About the Developer
+    - 4. Exit
 - User stories covered: 1, 2, 3
+- Error handling capabilities. Only inputs 1, 2, 3 or 4 accepted.
+- Error handling avoids repeating main menu options multiple times if multiple incorrect inputs entered
 
 ![Main menu](assets/readme_img/main_menu.jpg)
 
-### Instructions Page
+### INSTRUCTIONS PAGE
 
 - Explains how the quiz works
 - Directly accessible from the main menu
-- Navigates back to the main menu
+- Navigates back to the main menu (Error handling capabilities)
 - User stories covered: 2
 
 ![Instructions page](assets/readme_img/quiz_guide.jpg)
 
-### About the Developer Page
+### ABOUT THE DEVELOPER PAGE
 
-- Shows the help
+- Provides basic information and links to the developers social pages.
 - Directly accessible from the main menu
-- Navigates back to the main menu
+- Navigates back to the main menu (Error handling capabilities)
 - User stories covered: 3
 
 ![Help page](assets/readme_img/developer.jpg)
 
-### Quiz/question page
+### QUIZ PAGE
 
-- Show current question number and total question number
-- Show movie title
-- Offer user chance to see a clue
-- Show points scored for each question
-- Show total points scored for quiz so far
-- Consistent and clear navigation 
-- User stories covered: 1, 4, 5, 7
+- Shows logo and how points system works<br>
+![Game start](assets/readme_img/quiz_points.jpg)
 
+- Show current question number out of total number of questions<br>
+![Questoin Number](assets/readme_img/question_number.jpg)
+
+- Show movie title<br>
+![Movie Namen](assets/readme_img/movie_title.jpg)
+
+- Ask user if they want to see a clue
+    - Provide example answer format
+    - If Y (yes), clue shown, If N (no), programme continues on to answer input
+    - Error handling capabilities. Only accepts Y/y or N/n.
+    - Error handling avoids repeating multiple lines if multiple incorrect inputs entered<br>
+![Clue Question](assets/readme_img/clue_question.jpg)
+
+- Ask user the when the movie was released
+    - Provide example answer format
+    - Error handling capabilities. Only accepts 4 digits answers between 1950 - 2023.
+    - Error handling avoids repeating multiple lines if multiple incorrect inputs entered<br>
+![Clue Question](assets/readme_img/movie_question.jpg)
+
+- Provide feedback on user's answer
+    - Feedback varies depending on how accurate the answer was, and whether a clue was used.<br>
+    *Correct answer and no clue used*<br>
+    ![Clue Question](assets/readme_img/answer-correctwithbonus.jpg)<br>
+    *Correct answer with clue*<br>
+    ![Clue Question](assets/readme_img/answer-correct.jpg)<br>
+    *1 year off correct answer with clue*<br>
+    ![Clue Question](assets/readme_img/answer-1yearoff.jpg)<br>
+    *2 years off correct answer without clue*<br>
+    ![Clue Question](assets/readme_img/answer-2yearsoff.jpg)<br>
+    *3 or more years off correct answer (regardless if clue is used)*<br>
+    ![Clue Question](assets/readme_img/answer-wrong.jpg)
+    
+
+- Show points scored each question, and show total score so far.<br>
+![Clue Question](assets/readme_img/scores.jpg)
+
+- Consistent and clear navigation on each quiz page
+- User stories covered: 1, 4, 5, 7<br>
 ![Game start](assets/readme_img/quiz.jpg)
 
 ### Results Page
@@ -133,6 +198,8 @@ The app has 9 features in total
 - Offer user chance to play again, return to menu or exit programme
 
 ![Results page](assets/readme_img/results.jpg)
+
+### 
 
 ## Technologies Used
 

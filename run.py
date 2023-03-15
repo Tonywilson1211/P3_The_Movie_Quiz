@@ -219,7 +219,8 @@ def end_game_get_user_choice():
     """
     while True:
         try:
-            choice = input("Press 'S' to start a new quiz\n"
+            choice = input("\n************ Options ************\n\n"
+                           "Press 'S' to start a new quiz\n"
                            "Press 'M' to return to main menu\n"
                            "Press 'E' to exit the "
                            "programme\nSelect Option: ").strip().upper()
