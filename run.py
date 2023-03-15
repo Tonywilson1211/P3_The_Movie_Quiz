@@ -349,6 +349,7 @@ def display_main_menu(name):
             menu_displayed = False
         elif choice == '4':
             print_slowest("Exiting program...We hope to see you again soon!")
+            os.system('clear')
             exit()
         else:
             print("Invalid choice, please enter a number from 1 to 4.")
