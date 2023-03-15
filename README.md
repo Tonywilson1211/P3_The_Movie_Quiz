@@ -83,8 +83,6 @@ The following flowchart shows the structure and logic of the The Movie Quiz.
 
 ## Features
 
-The app has 9 features in total
-
 ### LANDING PAGE
 
 - First screen seen when programme starts
@@ -183,7 +181,7 @@ The app has 9 features in total
     ![Clue Question](assets/readme_img/answer-2yearsoff.jpg)<br>
     *3 or more years off correct answer (regardless if clue is used)*<br>
     ![Clue Question](assets/readme_img/answer-wrong.jpg)
-    
+
 
 - Show points scored each question, and show total score so far.<br>
 ![Clue Question](assets/readme_img/scores.jpg)
@@ -192,14 +190,12 @@ The app has 9 features in total
 - User stories covered: 1, 4, 5, 7<br>
 ![Game start](assets/readme_img/quiz.jpg)
 
-### Results Page
+### RESULTS PAGE
 
 - Show user the total score out of total possible score
-- Offer user chance to play again, return to menu or exit programme
-
+- Thanks user for playing
+- Menu options offer user chance to play again, return to menu or exit programme
 ![Results page](assets/readme_img/results.jpg)
-
-### 
 
 ## Technologies Used
 
@@ -212,9 +208,8 @@ The app has 9 features in total
 - Git
 - GitHub
 - Heroku - to deploy the app
-- Pycodestyle - for validation
+- pip8 - for validation
 - Lucid - for the flowchart [LucidChart](https://www.lucidchart.com/)
-- [Regex101](https://regex101.com/) - to test regex expressions
 
 ## Validation and Testing
 
@@ -241,7 +236,7 @@ Screenshot from console
 
 1. 
 Bug: Console would not clear entirely in all instances despite use of os.sys('clear')
-Solution: The use of os.system('printf "\033c"') was found to be an effective reaplcement.
+Solution: The use of os.system('printf "\033c"') was found to be an effective replacement.
 
 ## Deployment
 
