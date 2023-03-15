@@ -158,20 +158,13 @@ The linter showed no errors or other problems
 
 #### Python validation locally
 
-1. Install pycodestyle
-
-```python
-pip3 install pycodestyle
-```
-
-2. Select pycodestyle as linter
-
+1. pip8 compliant
 Screenshot from console
-![Problems](assets/readme_img/problems.jpg)
+![Problems](assets/readme_img/pip8.jpg)
 
 ### Testing user stories
 
-#### As a user I want to
+#### As a user I want to..
 
 <details><summary>Open Testing</summary>
 <img src="assets/readme_img/testing.jpg">
@@ -179,7 +172,9 @@ Screenshot from console
 
 ## Bugs
 
-
+1. 
+Bug: Console would not clear entirely in all instances despite use of os.sys('clear')
+Solution: The use of os.system('printf "\033c"') was found to be an effective reaplcement.
 
 ## Deployment
 
