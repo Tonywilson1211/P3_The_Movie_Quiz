@@ -289,7 +289,7 @@ You can clone the repository by following these steps:
 
 ### Acknowledgements
 
-- A special thanks to my mentor Gareth McGirr for his feedback and advice, especially on the documentation.
+- A special thanks to my mentor Gareth McGirr for his feedback and advice, especially on the documentation and use of .strip().
 - A thanks to the Code Institute for the great learning resources
 
 

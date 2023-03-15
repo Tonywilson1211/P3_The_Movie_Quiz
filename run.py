@@ -171,8 +171,10 @@ def calculate_points(user_answer, correct_answer, clue_choice, name):
 
 def game_summary(score, total_score, name):
     """
-    Shows user their total score at the end of the game, alongside
-    congrulation and thank you for playing messages.
+    Console is cleared.
+    Logo printed.
+    User shown their total score at the end of the game, alongside
+    'congrulations' and 'thank you for playing' messages.
     """
     os.system('printf "\033c"')
     logos.result_logo()
@@ -188,6 +190,7 @@ def game_summary(score, total_score, name):
 def main_menu_nav(name, choice):
     """
     Provides user with navigation options to menu screen.
+    Error input handling 
     """
     while True:
         print(f"{name}, when ready, press 'Enter' to head over ".center(80))
@@ -195,7 +198,7 @@ def main_menu_nav(name, choice):
         choice = input("\n ".center(80)).capitalize()
         if not choice.strip():
             os.system('clear')
-            display_main_menu(name)  # display the main menu again
+            display_main_menu(name) 
             break
     return name
 
