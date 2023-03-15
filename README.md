@@ -285,6 +285,7 @@ You can clone the repository by following these steps:
 - [Typing effect](https://stackoverflow.com/questions/20302331/typing-effect-in-python)
 - [Overwriting previous console lines](https://stackoverflow.com/questions/36520120/overwriting-clearing-previous-console-line)
 - [Prohibit input from user whilst typing effect active](https://chat-gpt.org/)
+- [Centering text in console](https://www.w3schools.com/python/ref_string_center.asp)
 
 ### Acknowledgements
 

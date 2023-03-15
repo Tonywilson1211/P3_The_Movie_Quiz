@@ -21,7 +21,7 @@ def print_slowly(text):
     file_descriptor = sys.stdin.fileno()
     old_settings = termios.tcgetattr(file_descriptor)
     try:
-        # set terminal to raw mode
+        # set terminal to raw mode to prohibit user interuption
         tty.setraw(file_descriptor)
         for char in text:
             print(char, end='', flush=True)
@@ -34,14 +34,13 @@ def print_slowly(text):
 
 def print_slowest(text):
     """
-    animation to make text appear to be typed out one letter at a time
-    rather than appear in bulk. Termios and tty imported to prohibit user
-    user from interupting text whilst printing.
+    Prints text slower than print_slowly function.
+    Offers variety within the programme.
     """
     file_descriptor = sys.stdin.fileno()
     old_settings = termios.tcgetattr(file_descriptor)
     try:
-        # set terminal to raw mode
+        # set terminal to raw mode to prohibit user interuption
         tty.setraw(file_descriptor)
         for char in text:
             print(char, end='', flush=True)
@@ -54,7 +53,7 @@ def print_slowest(text):
 
 def load_questions():
     """
-    Pull questions from movies.json file.
+    Pull questions at random from movies.json file.
     """
     with open('movies.json', 'r', encoding='utf-8') as file:
         questions = json.load(file)
@@ -64,6 +63,9 @@ def load_questions():
 
 def print_question_header(question_num):
     """
+    Clear console.
+    Print logo.
+    Print point scoring information.
     Print movie name and question number out of 5.
     """
     os.system('printf "\033c"')
@@ -81,9 +83,11 @@ def print_question_header(question_num):
 def get_clue_choice():
     """
     Get the user's choice on whether they want a clue.
+    'Y' or 'N' inputs required.
     """
     error_message = ""
     while True:
+        # Input errors are written over to avoid duplication using \033[F\033[K
         clue_choice = input(f"\033[F\033[K{error_message} \nWould "
                             "you like a clue? (Y or N): ").strip().upper()
         if clue_choice not in ['Y', 'N']:
@@ -97,7 +101,7 @@ def get_clue_choice():
 
 def print_question_clue(question):
     """
-    Prints the clue for the user when they ask for a clue.
+    Prints a clue for the user to help them answer the question.
     """
     print_slowly(f"\nClue: {question['clue']}\n\n\n")
 
@@ -108,6 +112,7 @@ def get_user_answer():
     """
     error_message = ""
     while True:
+        # Input errors are written over to avoid duplication using \033[F\033[K
         answer = input(f"\033[F\033[K{error_message}Guess the "
                        "year (e.g. 1990): ").strip()
         if len(answer) != 4:
@@ -129,8 +134,9 @@ def get_user_answer():
 
 def calculate_points(user_answer, correct_answer, clue_choice, name):
     """
-    The user's answer is compared to the correct answer and the appropriate
-    points are rewarded, along with a feedback message.
+    The user's answer is compared to the correct answer and looks at whether
+    a clue was used or not. The appropriate points are rewarded,
+    along with a feedback message.
     """
     if user_answer == correct_answer:
         if clue_choice == 'N':
@@ -165,7 +171,8 @@ def calculate_points(user_answer, correct_answer, clue_choice, name):
 
 def game_summary(score, total_score, name):
     """
-    Shows user their total score at the end of the game.
+    Shows user their total score at the end of the game, alongside
+    congrulation and thank you for playing messages.
     """
     os.system('printf "\033c"')
     logos.result_logo()
@@ -215,7 +222,8 @@ def get_user_choice():
 
 def end_game_get_user_choice():
     """
-    Navigation for the user at the end of the quiz.
+    Navigation for the user at the end of the quiz. Options include
+    start new quiz, return to main menu or exit programme.
     """
     while True:
         try:
@@ -234,7 +242,7 @@ def end_game_get_user_choice():
 
 def last_question_get_user_choice(name):
     """
-    When on the last question of the quiz, the user will see different
+    After the user answers the final question, they will see different
     navigation options which will offer them the results page,
     main menu, or exit programme.
     """
@@ -258,72 +266,115 @@ def last_question_get_user_choice(name):
 
 def play_game(name):
     """
-    This function runs the game by loading questions from a JSON file,
-    asking the user to guess the year a movie was released,
-    and providing feedback on their answer. The function keeps track
-    of the user's score, displays it at the end of the game,
-    and allows the user to continue playing or return to the main menu.
+    This function performs the following actions:
+    sets score to 0
+    number of questions set to 5
+    calculates total possible score (5 questions x 7 max points)
+    load_question function called to generate question
+    iterate through randomly selected question and assign it an index
+    print_question_header function call to print logo and index
+    movie title printed in uppercase letters (typewriter effect)
+    clue option function called, user enters choice (y or n)
+    if y, clue printed
+    get_user_answer function called. user enters answer
+    user answer compared to correct answer, feedback and score printed
+    if user correct, message confirms movie release date
+    if user incorrect, message states when moive was released
+    user shown the points scored
+    user shown total points scored in quiz so far
+    user shown navigation options
+    if user is mid quiz, specific navigation options listed
+     - continue to next question, go to main menu, exit programme
+    if user has answered all questions, specific navigation options listed
+     - see results page, go to main menu, exit programme
+    if user is on results page, specific navigation options listed
+     - start a new quiz, go to main menu, exit programme
     """
+    # sets score to 0
     score = 0
+    # number of questions set to 5
     num_of_questions = 5
-    questions = load_questions()
+    # calculates total possible score (5 questions x 7 max points)
     total_score = num_of_questions * 7
+    # load_question function called to generate question
+    questions = load_questions()
+    # iterate through randomly selected question and assign it an index
     for i, question in enumerate(questions[:num_of_questions]):
+        # print_question_header function call to print logo and index
         print_question_header(i)
+        # movie title printed in uppercase letters (typewriter effect)
         title = question['title'].upper()
         print_slowly(f"\nMovie Title:   {title}\n\n")
         # get clue choice from user
         clue_choice = get_clue_choice()
+        # if y, clue printed
         if clue_choice == 'Y':
             print_question_clue(question)
         # get answer from user
         answer = get_user_answer()
+        # user answer compared to correct answer, feedback and score printed
         points, feedback = calculate_points(
             answer, question['answer'], clue_choice, name)
         print(feedback)
+        # if user correct, message confirms movie release date
         if answer == question['answer']:
             print_slowly(
                 f"{question['title']} was indeed "
                 f"released in {question['answer']}")
+        # if user incorrect, message states when moive was released
         else:
             print_slowly(f"{question['title']} was released"
                          f" in {question['answer']}")
+        # user shown the points scored
         print_slowly(f"\nYou scored {points} points for this question.")
+        # user shown total points scored in quiz so far
         score += points
         print_slowly(f"So far you have scored {score} points\n")
+        # if user has answered all questions, specific nav options listed
         if i == num_of_questions - 1:
             last_question = last_question_get_user_choice(name)
             if last_question == '1':
+                # takes user to results page
                 os.system('clear')
                 game_summary(score, total_score, name)
                 end_choice = end_game_get_user_choice()
+                # if user is on results page, specific nav options listed
                 if end_choice == 'S':
+                    # clears console and starts a new quiz
                     os.system('clear')
                     play_game(name)
                 if end_choice == 'M':
+                    # clears console and show main menu
                     os.system('clear')
                     display_main_menu(name)
                 elif end_choice == 'E':
+                    # prints message, clears console, exits programme
                     print_slowest("Exiting program....."
                                   "We hope to see you again soon!")
                     os.system('clear')
                     exit()
             elif last_question == 'M':
+                # clears console and show main menu
                 os.system('clear')
                 display_main_menu(name)
             elif last_question == 'E':
+                # prints message, clears console, exits programme
                 print_slowest("Exiting program...We hope to "
                               "see you again soon!")
                 os.system('clear')
                 exit()
+        # if user is mid quiz, specific navigation options listed
         else:
             choice = get_user_choice()
             if choice == '1':
+                # quiz progresses to next question
                 continue
             elif choice == 'M':
+                # clears console and show main menu
                 os.system('clear')
                 display_main_menu(name)
             elif choice == 'E':
+                # prints message, clears console, exits programme
                 print_slowest("Exiting program...We hope to "
                               "see you again soon!")
                 os.system('clear')
@@ -353,6 +404,7 @@ def display_about_developer(name):
 def display_main_menu(name):
     """
     Display main menu
+
     """
     os.system('printf "\033c"')
     logos.main_menu_logo()
@@ -361,6 +413,8 @@ def display_main_menu(name):
     menu_displayed = False
 
     while True:
+        # checks if menu has already been displayed to avoid repition
+        # from any input errors
         if not menu_displayed:
             print_slowly("\nMain Menu:\n")
             print_slowly("1. Start game")
@@ -412,13 +466,15 @@ def display_instructions(name):
     print("Upon answering the 5th question you will be taken to".center(80))
     print("the quiz results screen and you can review".center(80))
     print("how well you did.\n\n".center(80))
+    # call nav function for user to navigate back to main menu
     choice = ""
     main_menu_nav(name, choice)
 
 
 def get_user_name():
     """
-    Get user name
+    Get user name.
+    Error handling prohibits input being either less than 2 or more than 9
     """
     while True:
         name = input("\n ".center(74)).capitalize().strip()
