@@ -396,7 +396,7 @@ def display_about_developer(name):
     print("https://www.linkedin.com/in/ant-wilson/".center(80))
     print("")
     print("GitHub Repository".center(80))
-    print("https://github.com/Tonywilson1211/TBD".center(80))
+    print("https://github.com/Tonywilson1211/P3_The_Movie_Quiz".center(80))
     print("")
     print("Thank you for taking the time to look at my project\n".center(80))
     choice = ""
@@ -458,16 +458,14 @@ def display_instructions(name):
     print("The aim of the game is to correctly guess the".center(80))
     print("release date of the movie.\n".center(80))
     print_slowly("*************** THE QUIZ GUIDE **************\n".center(80))
-    print("Each quiz page will present a movie name".center(80))
+    print("Each quiz page will present a movie name.".center(80))
     print("You will be asked if you want to see a clue".center(80))
     print("for when the movie was released.".center(80))
     print("Select either 'Y' (Yes) or 'N' (No).\n".center(80))
     print("Next you will enter your answer (4 digits e.g 1990)".center(80))
     print("You'll receive instant feedback on your answer,".center(80))
-    print("see points scored and also total points so far.".center(80))
-    print("Upon answering the 5th question you will be taken to".center(80))
-    print("the quiz results screen and you can review".center(80))
-    print("how well you did.\n\n".center(80))
+    print("along with points scored. Overall total also shown.".center(80))
+    print("After 5 questions you will head to the results page".center(80))
     # call nav function for user to navigate back to main menu
     choice = ""
     main_menu_nav(name, choice)
