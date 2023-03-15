@@ -232,6 +232,30 @@ def end_game_get_user_choice():
     return choice
 
 
+def last_question_get_user_choice(name):
+    """
+    When on the last question of the quiz, the user will see different
+    navigation options which will offer them the results page,
+    main menu, or exit programme.
+    """
+    while True:
+        try:
+            print_slowly("********** Quiz Complete! ***********\n")
+            print_slowly(f"{name}, you have reached the end of the quiz!!!")
+            print_slowly("See your options below\n")
+            choice = input("\n************ Options ************\n\n"
+                           "Press '1' to go to the results page\n"
+                           "Press 'M' to return to main menu\n"
+                           "Press 'E' to exit the "
+                           "programme\nSelect Option: ").strip().upper()
+            if choice not in ['1', 'M', 'E']:
+                raise ValueError
+            break
+        except ValueError:
+            print("Input not recognised. Please enter '1', 'M' or 'E'.")
+    return choice
+
+
 def play_game(name):
     """
     This function runs the game by loading questions from a JSON file,
@@ -268,29 +292,42 @@ def play_game(name):
         score += points
         print_slowly(f"So far you have scored {score} points\n")
         if i == num_of_questions - 1:
-            game_summary(score, total_score, name)
-            end_choice = end_game_get_user_choice()
-            if end_choice == 'S':
+            last_question = last_question_get_user_choice(name)
+            if last_question == '1':
                 os.system('clear')
-                play_game(name)
-            if end_choice == 'M':
+                game_summary(score, total_score, name)
+                end_choice = end_game_get_user_choice()
+                if end_choice == 'S':
+                    os.system('clear')
+                    play_game(name)
+                if end_choice == 'M':
+                    os.system('clear')
+                    display_main_menu(name)
+                elif end_choice == 'E':
+                    print_slowest("Exiting program....."
+                                  "We hope to see you again soon!")
+                    os.system('clear')
+                    exit()
+            elif last_question == 'M':
                 os.system('clear')
                 display_main_menu(name)
-            elif end_choice == 'E':
-                print_slowest("Exiting program....."
-                              "We hope to see you again soon!")
+            elif last_question == 'E':
+                print_slowest("Exiting program...We hope to "
+                              "see you again soon!")
                 os.system('clear')
                 exit()
-        choice = get_user_choice()
-        if choice == '1':
-            continue
-        elif choice == 'M':
-            os.system('clear')
-            display_main_menu(name)
-        elif choice == 'E':
-            print_slowest("Exiting program...We hope to see you again soon!")
-            os.system('clear')
-            exit()
+        else:
+            choice = get_user_choice()
+            if choice == '1':
+                continue
+            elif choice == 'M':
+                os.system('clear')
+                display_main_menu(name)
+            elif choice == 'E':
+                print_slowest("Exiting program...We hope to "
+                              "see you again soon!")
+                os.system('clear')
+                exit()
 
 
 def display_about_developer(name):
