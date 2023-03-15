@@ -83,7 +83,7 @@ The following flowchart shows the structure and logic of the The Movie Quiz.
 
 ## Features
 
-### LANDING PAGE
+### Landing Page
 
 - First screen seen when programme starts
 - Logo with name
@@ -91,7 +91,7 @@ The following flowchart shows the structure and logic of the The Movie Quiz.
 
 ![Landing page](assets/readme_img/landing.jpg)
 
-### ADD USER NAME
+### Add User Name
 
 - Also on landing page
 - User can enter their name.
@@ -100,12 +100,12 @@ The following flowchart shows the structure and logic of the The Movie Quiz.
 
 ![Name](assets/readme_img/name.jpg)
 
-### 'TYPEWRITER' EFFECT ON TEXT
+### 'Typewriter' Effect On Text
 
 - On selected texts throughout the app, text is printed one letter at a time. 
 - Improves user UX by adding styling whilst reduce the amount of text suddenly appearing.
 
-### DECORATIVE TITLES
+### Decorative Titles
 
 - Each page has a decorative title
 - 6 different titles in total
@@ -113,7 +113,7 @@ The following flowchart shows the structure and logic of the The Movie Quiz.
 
 ![Title example](assets/readme_img/title.jpg)
 
-### MAIN MENU PAGE
+### Main Menu Page
 
 - Shows the main menu
 - Contains the following options:
@@ -127,7 +127,7 @@ The following flowchart shows the structure and logic of the The Movie Quiz.
 
 ![Main menu](assets/readme_img/main_menu.jpg)
 
-### INSTRUCTIONS PAGE
+### Instructions Page
 
 - Explains how the quiz works
 - Directly accessible from the main menu
@@ -136,7 +136,7 @@ The following flowchart shows the structure and logic of the The Movie Quiz.
 
 ![Instructions page](assets/readme_img/quiz_guide.jpg)
 
-### ABOUT THE DEVELOPER PAGE
+### About The Developer Page
 
 - Provides basic information and links to the developers social pages.
 - Directly accessible from the main menu
@@ -145,7 +145,7 @@ The following flowchart shows the structure and logic of the The Movie Quiz.
 
 ![Help page](assets/readme_img/developer.jpg)
 
-### QUIZ PAGE
+### Quiz Page
 
 - Shows logo and how points system works<br>
 ![Game start](assets/readme_img/quiz_points.jpg)
@@ -190,13 +190,13 @@ The following flowchart shows the structure and logic of the The Movie Quiz.
 - User stories covered: 1, 4, 5, 7<br>
 ![Game start](assets/readme_img/quiz.jpg)
 
-### LAST QUESTION OF THE QUIZ
+### Last Question Of The Quiz
 
 - When the last question has been answered, the user is notified they have finished the quiz.
 - They are presented with a slightly different navigation options to reflect this.<br>
 ![Results page](assets/readme_img/complete.jpg)
 
-### RESULTS PAGE
+### Results Page
 
 - Show user the total score out of total possible score
 - Thanks user for playing
