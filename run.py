@@ -70,14 +70,14 @@ def print_question_header(question_num):
     """
     os.system('printf "\033c"')
     logos.question_header_logo()
-    print("\n\nPoints Available")
-    print("5 points for correct year")
-    print("3 points if 1 year off from correct year")
-    print("1 point if 2 years off from correct year")
-    print("0 points if 3 or more years off from correct year")
-    print("2 bonus points if clue NOT used and within"
+    print("\n\n Points Available")
+    print(" 5 points for correct year")
+    print(" 3 points if 1 year off from correct year")
+    print(" 1 point if 2 years off from correct year")
+    print(" 0 points if 3 or more years off from correct year")
+    print(" 2 bonus points if clue NOT used and within"
           " 2 years of correct year \n")
-    print(f"\n{'*' * 17} Question {question_num+1} of 5 {'*' * 18}")
+    print(f"\n {'*' * 17} Question {question_num+1} of 5 {'*' * 18}")
 
 
 def get_clue_choice():
@@ -88,10 +88,10 @@ def get_clue_choice():
     error_message = ""
     while True:
         # Input errors are written over to avoid duplication using \033[F\033[K
-        clue_choice = input(f"\033[F\033[K{error_message} \nWould "
+        clue_choice = input(f"\033[F\033[K{error_message} \n Would "
                             "you like a clue? (Y or N): ").strip().upper()
         if clue_choice not in ['Y', 'N']:
-            error_message = "\033[F\033[KInput not recognised. "\
+            error_message = "\033[F\033[K Input not recognised. "\
                             "Please enter 'Y' or 'N'"
         else:
             error_message = ""
@@ -103,7 +103,7 @@ def print_question_clue(question):
     """
     Prints a clue for the user to help them answer the question.
     """
-    print_slowly(f"\nClue: {question['clue']}\n\n\n")
+    print_slowly(f"\n Clue: {question['clue']}\n\n\n")
 
 
 def get_user_answer():
@@ -113,23 +113,23 @@ def get_user_answer():
     error_message = ""
     while True:
         # Input errors are written over to avoid duplication using \033[F\033[K
-        answer = input(f"\033[F\033[K{error_message}Guess the "
+        answer = input(f"\033[F\033[K{error_message} Guess the "
                        "year (e.g. 1990): ").strip()
         if len(answer) != 4:
-            error_message = "\033[F\033[KPlease enter a year as a "\
+            error_message = "\033[F\033[K Please enter a year as a "\
                             "4-digit number. e.g. 2004.\n"
         else:
             try:
                 year = int(answer)
                 if year < 1950 or year > 2023:
-                    error_message = "\033[F\033[KInput not recognised. "\
+                    error_message = "\033[F\033[K Input not recognised. "\
                                     "Please enter a valid year between "\
                                     "1950 and 2023.\n"
                 else:
                     return year
             except ValueError:
-                error_message = "\033[F\033[KPlease enter a year as a "\
-                            "4-digit number. e.g. 2004.\n"
+                error_message = "\033[F\033[K Please enter a year as a "\
+                            " 4-digit number. e.g. 2004.\n"
 
 
 def calculate_points(user_answer, correct_answer, clue_choice, name):
@@ -141,31 +141,31 @@ def calculate_points(user_answer, correct_answer, clue_choice, name):
     if user_answer == correct_answer:
         if clue_choice == 'N':
             points = 7
-            feedback = f"\nYou got it {name}! And you got 2 bonus "\
-                       "points\nfor not using a clue!\n"
+            feedback = f"\n You got it {name}! And you got 2 bonus "\
+                       " points\n for not using a clue!\n"
         else:
             points = 5
-            feedback = f"\nYou got it {name}!"
+            feedback = f"\n You got it {name}!"
     elif abs(user_answer - correct_answer) == 1:
         if clue_choice == 'N':
             points = 5
-            feedback = f"So close {name}, but not quite! But you do get 2 "\
-                       "bonus points\nfor not using a clue!\n"
+            feedback = f" So close {name}, but not quite! But you do get 2 "\
+                       " bonus points\n for not using a clue!\n"
         else:
             points = 3
-            feedback = f"\nSo close {name}, but not quite!\n"
+            feedback = f"\n So close {name}, but not quite!\n"
     elif abs(user_answer - correct_answer) == 2:
         if clue_choice == 'N':
             points = 3
-            feedback = f"\nNot bad {name}, but you can do better! "\
-                       "But you do get 2 "\
-                       "bonus points\nfor not using a clue!\n"
+            feedback = f"\n Not bad {name}, but you can do better! "\
+                       " But you do get 2 "\
+                       " bonus points\n for not using a clue!\n"
         else:
             points = 1
-            feedback = f"\nNot bad {name}, but you can do better!\n"
+            feedback = f"\n Not bad {name}, but you can do better!\n"
     else:
         points = 0
-        feedback = f"\nSorry {name}, that's not correct.\n"
+        feedback = f"\n Sorry {name}, that's not correct.\n"
     return points, feedback
 
 
@@ -178,12 +178,12 @@ def game_summary(score, total_score, name):
     """
     os.system('printf "\033c"')
     logos.result_logo()
-    print_slowly(f"\nCongratulations on completing the quiz {name}!")
-    print_slowly("Let's take a look at how you got on....")
+    print_slowly(f"\n Congratulations on completing the quiz {name}!")
+    print_slowly(" Let's take a look at how you got on....")
     percentage = round(score / total_score * 100)
-    print_slowly(f"\nYour final score is {score} out of a "
+    print_slowly(f"\n Your final score is {score} out of a "
                  f"possible {total_score}. That's {percentage}%!\n")
-    print_slowly("Thanks for taking the time to play our "
+    print_slowly(" Thanks for taking the time to play our "
                  f"quiz {name}, we hope you had fun!\n")
 
 
@@ -192,8 +192,8 @@ def main_menu_nav(name, choice):
     Provides user with navigation options to menu screen.
     """
     while True:
-        print(f"{name}, when ready, press 'Enter' to head over ".center(80))
-        print("to the main menu: ".center(80))
+        print(f" {name}, when ready, press 'Enter' to head over ".center(80))
+        print(" to the main menu: ".center(80))
         choice = input("\n ".center(80)).capitalize()
         if not choice.strip():
             os.system('clear')
@@ -209,16 +209,16 @@ def get_user_choice():
     """
     while True:
         try:
-            choice = input("\n************ Options ************\n\n"
-                           "Press '1' for next question\n"
-                           "Press 'M' to return to main menu\n"
-                           "Press 'E' to exit the "
-                           "programme\nSelect Option: ").strip().upper()
+            choice = input("\n ************ Options ************\n\n"
+                           " Press '1' for next question\n"
+                           " Press 'M' to return to main menu\n"
+                           " Press 'E' to exit the "
+                           "programme\n Select Option: ").strip().upper()
             if choice not in ['1', 'M', 'E']:
                 raise ValueError
             break
         except ValueError:
-            print("Input not recognised. Please enter '1', 'M' or 'E'.")
+            print(" Input not recognised. Please enter '1', 'M' or 'E'.")
     return choice
 
 
@@ -229,16 +229,16 @@ def end_game_get_user_choice():
     """
     while True:
         try:
-            choice = input("\n************ Options ************\n\n"
-                           "Press 'S' to start a new quiz\n"
-                           "Press 'M' to return to main menu\n"
-                           "Press 'E' to exit the "
+            choice = input("\n ************ Options ************\n\n"
+                           " Press 'S' to start a new quiz\n"
+                           " Press 'M' to return to main menu\n"
+                           " Press 'E' to exit the "
                            "programme\nSelect Option: ").strip().upper()
             if choice not in ['S', 'M', 'E']:
                 raise ValueError
             break
         except ValueError:
-            print("Input not recognised. Please enter 'S', 'M' or 'E'.")
+            print(" Input not recognised. Please enter 'S', 'M' or 'E'.")
     return choice
 
 
@@ -250,19 +250,19 @@ def last_question_get_user_choice(name):
     """
     while True:
         try:
-            print_slowly("********** Quiz Complete! ***********\n")
-            print_slowly(f"{name}, you have reached the end of the quiz!!!")
-            print_slowly("See your options below\n")
-            choice = input("\n************ Options ************\n\n"
-                           "Press '1' to go to the results page\n"
-                           "Press 'M' to return to main menu\n"
-                           "Press 'E' to exit the "
-                           "programme\nSelect Option: ").strip().upper()
+            print_slowly(" ********** Quiz Complete! ***********\n")
+            print_slowly(f" {name}, you have reached the end of the quiz!!!")
+            print_slowly(" See your options below\n")
+            choice = input("\n ************ Options ************\n\n"
+                           " Press '1' to go to the results page\n"
+                           " Press 'M' to return to main menu\n"
+                           " Press 'E' to exit the "
+                           "programme\n Select Option: ").strip().upper()
             if choice not in ['1', 'M', 'E']:
                 raise ValueError
             break
         except ValueError:
-            print("Input not recognised. Please enter '1', 'M' or 'E'.")
+            print(" Input not recognised. Please enter '1', 'M' or 'E'.")
     return choice
 
 
@@ -306,7 +306,7 @@ def play_game(name):
         print_question_header(i)
         # movie title printed in uppercase letters (typewriter effect)
         title = question['title'].upper()
-        print_slowly(f"\nMovie Title:   {title}\n\n")
+        print_slowly(f"\n Movie Title:   {title}\n\n")
         # get clue choice from user
         clue_choice = get_clue_choice()
         # if y, clue printed
@@ -321,17 +321,17 @@ def play_game(name):
         # if user correct, message confirms movie release date
         if answer == question['answer']:
             print_slowly(
-                f"{question['title']} was indeed "
+                f" {question['title']} was indeed "
                 f"released in {question['answer']}")
         # if user incorrect, message states when moive was released
         else:
-            print_slowly(f"{question['title']} was released"
+            print_slowly(f" {question['title']} was released"
                          f" in {question['answer']}")
         # user shown the points scored
-        print_slowly(f"\nYou scored {points} points for this question.")
+        print_slowly(f"\n You scored {points} points for this question.")
         # user shown total points scored in quiz so far
         score += points
-        print_slowly(f"So far you have scored {score} points\n")
+        print_slowly(f" So far you have scored {score} points\n")
         # if user has answered all questions, specific nav options listed
         if i == num_of_questions - 1:
             last_question = last_question_get_user_choice(name)
@@ -351,7 +351,7 @@ def play_game(name):
                     display_main_menu(name)
                 elif end_choice == 'E':
                     # prints message, clears console, exits programme
-                    print_slowest("Exiting program....."
+                    print_slowest(" Exiting program....."
                                   "We hope to see you again soon!")
                     os.system('clear')
                     exit()
@@ -361,7 +361,7 @@ def play_game(name):
                 display_main_menu(name)
             elif last_question == 'E':
                 # prints message, clears console, exits programme
-                print_slowest("Exiting program...We hope to "
+                print_slowest(" Exiting program...We hope to "
                               "see you again soon!")
                 os.system('clear')
                 exit()
@@ -377,7 +377,7 @@ def play_game(name):
                 display_main_menu(name)
             elif choice == 'E':
                 # prints message, clears console, exits programme
-                print_slowest("Exiting program...We hope to "
+                print_slowest(" Exiting program...We hope to "
                               "see you again soon!")
                 os.system('clear')
                 exit()
@@ -418,15 +418,15 @@ def display_main_menu(name):
         # checks if menu has already been displayed to avoid repition
         # from any input errors
         if not menu_displayed:
-            print_slowly("\nMain Menu:\n")
-            print_slowly("1. Start game")
-            print_slowly("2. Quiz Guide")
-            print_slowly("3. About the Developer")
-            print_slowly("4. Exit program\n")
+            print_slowly("\n Main Menu:\n")
+            print_slowly(" 1. Start game")
+            print_slowly(" 2. Quiz Guide")
+            print_slowly(" 3. About the Developer")
+            print_slowly(" 4. Exit program\n")
             menu_displayed = True
 
         # get user input
-        choice = input("Select Option (1-4): ").strip()
+        choice = input(" Select Option (1-4): ").strip()
 
         # handle user choice
         if choice == '1':
@@ -441,11 +441,11 @@ def display_main_menu(name):
             display_about_developer(name)
             menu_displayed = False
         elif choice == '4':
-            print_slowest("Exiting program...We hope to see you again soon!")
+            print_slowest(" Exiting program...We hope to see you again soon!")
             os.system('clear')
             exit()
         else:
-            print("Invalid choice, please enter a number from 1 to 4.")
+            print(" Invalid choice, please enter a number from 1 to 4.")
 
 
 def display_instructions(name):
