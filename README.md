@@ -190,6 +190,12 @@ The following flowchart shows the structure and logic of the The Movie Quiz.
 - User stories covered: 1, 4, 5, 7<br>
 ![Game start](assets/readme_img/quiz.jpg)
 
+### LAST QUESTION OF THE QUIZ
+
+- When the last question has been answered, the user is notified they have finished the quiz.
+- They are presented with a slightly different navigation options to reflect this.<br>
+![Results page](assets/readme_img/complete.jpg)
+
 ### RESULTS PAGE
 
 - Show user the total score out of total possible score

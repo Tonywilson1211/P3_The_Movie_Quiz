@@ -169,7 +169,7 @@ def game_summary(score, total_score, name):
     """
     os.system('printf "\033c"')
     logos.result_logo()
-    print_slowly(f"\nCongratulations {name}, you have completed the quiz!")
+    print_slowly(f"\nCongratulations on completing the quiz {name}!")
     print_slowly("Let's take a look at how you got on....")
     percentage = round(score / total_score * 100)
     print_slowly(f"\nYour final score is {score} out of a "
