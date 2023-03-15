@@ -218,7 +218,10 @@ You can clone the repository by following these steps:
 ### Code
 
 - [ASCII art generator](http://patorjk.com/software/taag/)
-- [Console clear function](https://stackoverflow.com/questions/517970/how-to-clear-the-interpreter-console)
+- [Console clear function](https://stackoverflow.com/questions/2084508/clear-terminal-in-python)
+- [Typing effect](https://stackoverflow.com/questions/20302331/typing-effect-in-python)
+- [Overwriting previous console lines](https://stackoverflow.com/questions/36520120/overwriting-clearing-previous-console-line)
+- [Prohibit input from user whilst typing effect active](https://chat-gpt.org/)
 
 ### Acknowledgements
 
