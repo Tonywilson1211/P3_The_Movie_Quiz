@@ -190,7 +190,6 @@ def game_summary(score, total_score, name):
 def main_menu_nav(name, choice):
     """
     Provides user with navigation options to menu screen.
-    Error input handling 
     """
     while True:
         print(f"{name}, when ready, press 'Enter' to head over ".center(80))
@@ -198,7 +197,7 @@ def main_menu_nav(name, choice):
         choice = input("\n ".center(80)).capitalize()
         if not choice.strip():
             os.system('clear')
-            display_main_menu(name) 
+            display_main_menu(name)
             break
     return name
 
