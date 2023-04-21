@@ -142,18 +142,18 @@ def calculate_points(user_answer, correct_answer, clue_choice, name):
         if clue_choice == 'N':
             points = 7
             feedback = f"\n You got it {name}! And you got 2 bonus "\
-                       " points\n for not using a clue!\n"
+                       "points\n for not using a clue!\n"
         else:
             points = 5
             feedback = f"\n You got it {name}!"
     elif abs(user_answer - correct_answer) == 1:
         if clue_choice == 'N':
             points = 5
-            feedback = f" So close {name}, but not quite! But you do get 2 "\
-                       " bonus points\n for not using a clue!\n"
+            feedback = f" 1 year off the correct answer {name}, You do get 2 "\
+                       "bonus points\n for not using a clue!\n"
         else:
             points = 3
-            feedback = f"\n So close {name}, but not quite!\n"
+            feedback = f"\n Nearly! 1 year off the correct answer{name}\n"
     elif abs(user_answer - correct_answer) == 2:
         if clue_choice == 'N':
             points = 3
